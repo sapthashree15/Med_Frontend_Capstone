@@ -37,7 +37,7 @@ export default function Signup() {
         name: userName,
         email: userEmail,
         password: userPassword,
-        phone: userPhone,
+        phone: userPhone
       }),
     });
 
