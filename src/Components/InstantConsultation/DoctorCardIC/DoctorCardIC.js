@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import { v4 as uuidv4 } from "uuid";
@@ -36,11 +36,11 @@ const DoctorCardIC = ({ name, speciality, experience, ratings }) => {
     setShowModal(false);
 
     const doctorData = {
-        name,
-        speciality,
-        experience,
-        ratings
-    }
+      name,
+      speciality,
+      experience,
+      ratings,
+    };
 
     localStorage.setItem('doctorData', JSON.stringify(doctorData));
     localStorage.setItem('appointmentData', JSON.stringify(newAppointment));
@@ -61,7 +61,9 @@ const DoctorCardIC = ({ name, speciality, experience, ratings }) => {
             viewBox="0 0 16 16"
           >
             {" "}
-            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />{" "}
+            <path
+              d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
+            />{" "}
           </svg>
         </div>
         <div className="doctor-card-details">
@@ -78,20 +80,20 @@ const DoctorCardIC = ({ name, speciality, experience, ratings }) => {
 
       <div className="doctor-card-options-container">
         <button
-            className={`book-appointment-btn ${
-            appointments.length > 0 ? "cancel-appointment" : ""
-            }`}
-            onClick={handleBooking}
+          className={`book-appointment-btn ${
+            appointments.length > 0 ? 'cancel-appointment' : ''
+          }`}
+          onClick={handleBooking}
         >
-            {appointments.length > 0 ? (
+          {appointments.length > 0 ? (
             <div>Cancel Appointment</div>
-            ) : (
+          ) : (
             <div>Book Appointment</div>
-            )}
-            <div>No Booking Fee</div>
+          )}
+          <div>No Booking Fee</div>
         </button>
         <Popup
-          style={{ backgroundColor: "#FFFFFF" }}
+          style={{ backgroundColor: '#FFFFFF' }}
           modal
           open={showModal}
           onClose={() => setShowModal(false)}
@@ -99,7 +101,7 @@ const DoctorCardIC = ({ name, speciality, experience, ratings }) => {
           {
             <div
               className="doctorbg"
-              style={{ height: "100vh", overflow: "scroll" }}
+              style={{ height: '100vh', overflow: 'scroll' }}
             >
               <div>
                 <div className="doctor-card-profile-image-container">
@@ -112,7 +114,9 @@ const DoctorCardIC = ({ name, speciality, experience, ratings }) => {
                     viewBox="0 0 16 16"
                   >
                     {" "}
-                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />{" "}
+                    <path
+                      d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
+                    />{" "}
                   </svg>
                 </div>
                 <div className="doctor-card-details">
@@ -131,7 +135,7 @@ const DoctorCardIC = ({ name, speciality, experience, ratings }) => {
 
               {appointments.length > 0 ? (
                 <>
-                  <h3 style={{ textAlign: "center" }}>Appointment Booked!</h3>
+                  <h3 style={{ textAlign: 'center' }}>Appointment Booked!</h3>
                   {appointments.map((appointment) => (
                     <div className="bookedInfo" key={appointment.id}>
                       <p>Name: {appointment.name}</p>
@@ -140,7 +144,7 @@ const DoctorCardIC = ({ name, speciality, experience, ratings }) => {
                       <p>Time Slot: {appointment.selectedSlot}</p>
                       <button
                         className="cancel-appointment-btn"
-                        style={{ marginTop: "20px" }}
+                        style={{ marginTop: '20px' }}
                         onClick={() => handleCancel(appointment.id)}
                       >
                         Cancel Appointment

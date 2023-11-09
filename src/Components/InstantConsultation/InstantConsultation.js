@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import React, { useEffect, useState, useCallback } from "react";
+import { useSearchParams } from "react-router-dom";
 import DoctorCardIC from "./DoctorCardIC/DoctorCardIC";
 import FindDoctorSearchIC from "./FindDoctorSearchIC/FindDoctorSearchIC";
 import "./InstantConsultation.css";
@@ -9,11 +9,17 @@ const InstantConsultation = () => {
   const [doctors, setDoctors] = useState([]);
   const [filteredDoctors, setFilteredDoctors] = useState([]);
   const [isSearched, setIsSearched] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const getDoctorsDetails = () => {
+  const getDoctorsDetails = useCallback(() => {
+    setIsLoading(true);
     fetch("https://api.npoint.io/9a5543d36f1460da2f63")
       .then((res) => res.json())
       .then((data) => {
+        setIsLoading(false);
+        setError(null);
+
         if (searchParams.get("speciality")) {
           const filtered = data.filter(
             (doctor) =>
@@ -22,7 +28,6 @@ const InstantConsultation = () => {
           );
 
           setFilteredDoctors(filtered);
-
           setIsSearched(true);
         } else {
           setFilteredDoctors([]);
@@ -30,8 +35,12 @@ const InstantConsultation = () => {
         }
         setDoctors(data);
       })
-      .catch((err) => console.log(err));
-  };
+      .catch((err) => {
+        setIsLoading(false);
+        setError("An error occurred while fetching data.");
+        console.log(err);
+      });
+  }, [searchParams]);
 
   const handleSearch = (searchText) => {
     if (searchText === "") {
@@ -39,7 +48,6 @@ const InstantConsultation = () => {
       setIsSearched(false);
     } else {
       const filtered = doctors.filter((doctor) =>
-        //
         doctor.speciality.toLowerCase().includes(searchText.toLowerCase())
       );
 
@@ -48,20 +56,21 @@ const InstantConsultation = () => {
     }
   };
 
-  const navigate = useNavigate();
   useEffect(() => {
     getDoctorsDetails();
     // const authtoken = sessionStorage.getItem("auth-token");
     // if (!authtoken) {
     //     navigate("/login");
     // }
-  }, [searchParams]);
+  }, [searchParams, getDoctorsDetails]);
 
   return (
     <center>
       <div className="searchpage-container">
         <FindDoctorSearchIC onSearch={handleSearch} />
         <div className="search-results-container">
+          {isLoading && <p>Loading...</p>}
+          {error && <p>{error}</p>}
           {isSearched ? (
             <center>
               <h2>

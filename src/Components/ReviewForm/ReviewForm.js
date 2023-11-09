@@ -1,19 +1,12 @@
-import {Table, Button} from 'react-bootstrap';
+import { Table, Button } from 'react-bootstrap';
 import "reactjs-popup/dist/index.css";
 import GiveReviews from './GiveReviews';
-import React, { useState } from 'react';
+import React from 'react';
 
 export default function ReviewForm() {
-  const [reviews, setReviews] = useState("")
-
-  const handleReview = function (review) {
-    setReviews(review);
-  }
-  console.log(reviews)
-
   return (
-    <div style={{margin: "auto", maxWidth: "800px", marginTop: "10%"}}>
-      <h2 style={{marginBottom: "10px"}}>Reviews</h2>
+    <div style={{ margin: "auto", maxWidth: "800px", marginTop: "10%" }}>
+      <h2 style={{ marginBottom: "10px" }}>Reviews</h2>
       <Table responsive>
         <thead>
           <tr>
@@ -37,7 +30,7 @@ export default function ReviewForm() {
           <tr>
             <td>2</td>
             <td>Dr. Jason Lee</td>
-            <td>Orthopedy</td>
+            <td>Orthopedics</td>
             <td>
               {<GiveReviews />}
             </td>
@@ -48,13 +41,12 @@ export default function ReviewForm() {
             <td>Dr. Paula Boe</td>
             <td>Dermatology</td>
             <td>
-              {/* {<GiveReviews onHandleReview={handleReview} />} */}
-              <Button variant="primary" disabled size ='sm'>Review Submitted</Button>
-              </td>
+              <Button variant="primary" disabled size='sm'>Review Submitted</Button>
+            </td>
             <td>Great consultation</td>
           </tr>
         </tbody>
       </Table>
     </div>
-  )
+  );
 }

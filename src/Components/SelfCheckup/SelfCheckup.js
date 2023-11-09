@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./SelfCheckup.css";
 
 const SelfCheckup = () => {
@@ -65,6 +64,7 @@ const SelfCheckup = () => {
             href="http://www.nhs.uk/chq/pages/878.aspx"
             aria-label="Get more information here, opens in new window"
             target="_blank"
+            rel="noreferrer"
           >
             Get more information here
           </a>
@@ -82,6 +82,7 @@ const SelfCheckup = () => {
             href="https://www.nhs.uk/common-health-questions/womens-health/how-should-i-check-my-breasts/"
             aria-label="Click here for more information, opens in new window"
             target="_blank"
+            rel="noreferrer"
           >
             Click here for more information
           </a>
@@ -102,6 +103,7 @@ const SelfCheckup = () => {
             href="http://www.nhs.uk/chq/Pages/2024.aspx?CategoryID=52"
             aria-label="Click here for more detail, opens in new window"
             target="_blank"
+            rel="noreferrer"
           >
             Click here for more detail
           </a>
@@ -124,6 +126,7 @@ const SelfCheckup = () => {
             href="https://www.nhs.uk/common-health-questions/lifestyle/what-is-blood-pressure/"
             aria-label="Get more information here, opens in new window"
             target="_blank"
+            rel="noreferrer"
           >
             Get more information here
           </a>
@@ -145,6 +148,7 @@ const SelfCheckup = () => {
             href="http://www.everydayhealth.com/healthy-living-pictures/new-home-tests-will-save-you-a-trip-to-the-doctor.aspx#01"
             aria-label="Click here for further information, opens in new window"
             target="_blank"
+            rel="noreferrer"
           >
             Click here for further information
           </a>
@@ -167,6 +171,7 @@ const SelfCheckup = () => {
             href="http://www.nhs.uk/Conditions/Diabetes-type2/Pages/Symptoms.aspx"
             aria-label="Click here for more details, opens in new window"
             target="_blank"
+            rel="noreferrer"
           >
             Click here for more details
           </a>
@@ -186,6 +191,7 @@ const SelfCheckup = () => {
             href="https://www.nhs.uk/conditions/meningitis/symptoms/"
             aria-label="Click here for more information, opens in new window"
             target="_blank"
+            rel="noreferrer"
           >
             Click here for more information
           </a>
@@ -206,6 +212,7 @@ const SelfCheckup = () => {
             href="http://www.nhs.uk/chq/Pages/849.aspx"
             aria-label="http://www.nhs.uk/chq/Pages/849.aspx, opens in new window"
             target="_blank"
+            rel="noreferrer"
           >
             Get more information here
           </a>
@@ -226,6 +233,7 @@ const SelfCheckup = () => {
             href="http://www.nhs.uk/Conditions/Malignant-melanoma/Pages/Introduction.aspx#Signs"
             aria-label="Click here for further detail, opens in new window"
             target="_blank"
+            rel="noreferrer"
           >
             Click here for further detail
           </a>

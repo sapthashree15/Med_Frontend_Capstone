@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import DoctorCard from "./DoctorCard/DoctorCard";
 import FindDoctorSearch from "./FindDoctorSearch/FindDoctorSearch";
@@ -10,7 +10,7 @@ const BookingConsultation = () => {
   const [filteredDoctors, setFilteredDoctors] = useState([]);
   const [isSearched, setIsSearched] = useState(false);
 
-  const getDoctorsDetails = () => {
+  const getDoctorsDetails = useCallback(() => {
     fetch("https://api.npoint.io/9a5543d36f1460da2f63")
       .then((res) => res.json())
       .then((data) => {
@@ -22,7 +22,6 @@ const BookingConsultation = () => {
           );
 
           setFilteredDoctors(filtered);
-
           setIsSearched(true);
         } else {
           setFilteredDoctors([]);
@@ -31,7 +30,7 @@ const BookingConsultation = () => {
         setDoctors(data);
       })
       .catch((err) => console.log(err));
-  };
+  }, [searchParams]);
 
   const handleSearch = (searchText) => {
     if (searchText === "") {
@@ -39,7 +38,6 @@ const BookingConsultation = () => {
       setIsSearched(false);
     } else {
       const filtered = doctors.filter((doctor) =>
-        //
         doctor.speciality.toLowerCase().includes(searchText.toLowerCase())
       );
 
@@ -55,7 +53,7 @@ const BookingConsultation = () => {
     if (!authtoken) {
       navigate("/login");
     }
-  }, [searchParams]);
+  }, [getDoctorsDetails, navigate]);
 
   return (
     <center>

@@ -9,15 +9,6 @@ const ProfileCard = () => {
   const [editMode, setEditMode] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const authtoken = sessionStorage.getItem("auth-token");
-    if (!authtoken) {
-      navigate("/login");
-    } else {
-      fetchUserProfile();
-    }
-  }, [navigate]);
-
   const fetchUserProfile = async () => {
     try {
       const authtoken = sessionStorage.getItem("auth-token");
@@ -47,6 +38,16 @@ const ProfileCard = () => {
       // Handle error case
     }
   };
+
+  useEffect(() => {
+    const authtoken = sessionStorage.getItem("auth-token");
+    if (!authtoken) {
+      navigate("/login");
+    } else {
+      fetchUserProfile();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [navigate]);
 
   const handleEdit = () => {
     setEditMode(true);

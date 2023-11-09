@@ -1,16 +1,8 @@
-import './ReportsLayout.css'
-
-import {Table, Button} from 'react-bootstrap';
+import React from 'react';
+import { Table, Button } from 'react-bootstrap';
 import "reactjs-popup/dist/index.css";
-import React, { useState } from 'react';
 
 export default function ReportsLayout() {
-  const [report, setReport] = useState("")
-
-  const handleReport = function (report) {
-    setReport(report);
-  }
-
   const openReportInNewTab = () => {
     const reportUrl = '../../../patient_report.pdf';
     window.open(reportUrl, '_blank');
@@ -28,8 +20,8 @@ export default function ReportsLayout() {
   };
 
   return (
-    <div style={{margin: "auto", maxWidth: "800px", marginTop: "10%"}}>
-      <h2 style={{marginBottom: "10px"}}>Reports</h2>
+    <div style={{ margin: "auto", maxWidth: "800px", marginTop: "10%" }}>
+      <h2 style={{ marginBottom: "10px" }}>Reports</h2>
       <Table responsive>
         <thead>
           <tr>
@@ -46,10 +38,10 @@ export default function ReportsLayout() {
             <td>Dr. John Doe</td>
             <td>Cardiology</td>
             <td>
-                <Button variant="primary" size='sm' onClick={openReportInNewTab}>View Report</Button>
+              <Button variant="primary" size='sm' onClick={openReportInNewTab}>View Report</Button>
             </td>
             <td>
-                <Button variant="primary" size='sm' onClick={downloadReport}>Download Report</Button>
+              <Button variant="primary" size='sm' onClick={downloadReport}>Download Report</Button>
             </td>
           </tr>
           <tr>
@@ -60,11 +52,11 @@ export default function ReportsLayout() {
               <Button variant="primary" disabled size='sm'>Report Unavailable</Button>
             </td>
             <td>
-                <Button variant="primary" disabled size='sm'>Download Unavailable</Button>
+              <Button variant="primary" disabled size='sm'>Download Unavailable</Button>
             </td>
           </tr>
         </tbody>
       </Table>
     </div>
-  )
+  );
 }
